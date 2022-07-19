@@ -8,7 +8,7 @@ const commandFiles = readdirSync('./src/commands').filter(file => file.endsWith(
 	execute: async(interaction) => {
   let client = interaction.client;
     	if (!interaction.type == 2) return;
-      if(interaction.member.bot) return;
+      if(interaction.user.bot) return;
 
 	for (const file of commandFiles) {
         const command = require(`../../src/commands/${file}`);
