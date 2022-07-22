@@ -1,5 +1,5 @@
-const { ActivityType } = require("discord.js")
-module.exports = {
+import { ActivityType } from "discord.js";
+export default {
 	name: 'ready',
 	once: true,
 	execute(client) {

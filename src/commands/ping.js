@@ -1,7 +1,7 @@
-const { EmbedBuilder, PermissionsBitField } = require("discord.js");
-const { SlashCommandBuilder } = require("@discordjs/builders");
+import { EmbedBuilder, PermissionsBitField } from "discord.js";
+import { SlashCommandBuilder } from "@discordjs/builders";
 
-module.exports = {
+export default {
   data: new SlashCommandBuilder()
     .setName("ping")
     .setDescription("Pong!"),

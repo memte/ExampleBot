@@ -1,26 +1,25 @@
-const { Client, Partials, GatewayIntentBits, Collection } = require("discord.js");
+import { Client, Partials, GatewayIntentBits, Collection } from "discord.js";
 const client = new Client({intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMembers, GatewayIntentBits.GuildEmojisAndStickers, GatewayIntentBits.GuildIntegrations, GatewayIntentBits.GuildWebhooks, GatewayIntentBits.GuildInvites, GatewayIntentBits.GuildVoiceStates, GatewayIntentBits.GuildPresences, GatewayIntentBits.GuildMessages, GatewayIntentBits.GuildMessageReactions, GatewayIntentBits.GuildMessageTyping, GatewayIntentBits.DirectMessages, GatewayIntentBits.DirectMessageReactions, GatewayIntentBits.DirectMessageTyping, GatewayIntentBits.MessageContent], shards: "auto", partials: [Partials.Message, Partials.Channel, Partials.GuildMember, Partials.Reaction, Partials.GuildScheduledEvent, Partials.User, Partials.ThreadMember]});
-const { prefix, owner, token } = require("./config.js");
-const { readdirSync } = require("fs")
-const moment = require("moment");
-const { REST } = require('@discordjs/rest');
-const { SlashCommandBuilder } = require('@discordjs/builders');
-const { Routes } = require('discord-api-types/v10');
+import config from "./config.js";
+import { readdirSync } from "fs";
+import moment from "moment";
+import { REST } from '@discordjs/rest';
+import { Routes } from 'discord-api-types/v10';
 
 client.commands = new Collection()
 
-const rest = new REST({ version: '10' }).setToken(token);
 
 const log = l => { console.log(`[${moment().format("DD-MM-YYYY HH:mm:ss")}] ${l}`) };
 
 //command-handler
-const commands = [];
-const commandFiles = readdirSync('./src/commands').filter(file => file.endsWith('.js'));
-for (const file of commandFiles) {
-	const command = require(`./src/commands/${file}`);
-  commands.push(command.data.toJSON());
-  client.commands.set(command.data.name, command);
-}
+const commands = []
+  readdirSync(`./src/commands`).forEach(async file => {
+    const command = await import(`./src/commands/${file}`).then(c => c.default)
+    commands.push(command.data.toJSON());
+    client.commands.set(command.data.name, command)
+  })
+
+const rest = new REST({ version: '10' }).setToken(config.token);
 
 client.on("ready", async () => {
         try {
@@ -28,23 +27,23 @@ client.on("ready", async () => {
                 Routes.applicationCommands(client.user.id),
                 { body: commands },
             );
+
+		    log(`${client.commands.size} Komut yüklendi ve yenilendi!`);
         } catch (error) {
             console.error(error);
         }
-    log(`${client.user.username} Aktif Edildi!`);
+    log(`${client.user.username} Başarıyla Aktif Edildi!`);
 })
 
 //event-handler
-const eventFiles = readdirSync('./src/events').filter(file => file.endsWith('.js'));
-
-for (const file of eventFiles) {
-	const event = require(`./src/events/${file}`);
+readdirSync('./src/events').forEach(async file => {
+	const event = await import(`./src/events/${file}`).then(x => x.default)
 	if (event.once) {
 		client.once(event.name, (...args) => event.execute(...args));
 	} else {
 		client.on(event.name, (...args) => event.execute(...args));
 	}
-}
+})
 //
 
-client.login(token)
+client.login(config.token)

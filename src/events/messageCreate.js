@@ -1,5 +1,5 @@
-const { owner, prefix } = require('../../config.js');
-module.exports = {
+import config from '../../config.js';
+export default {
 	name: 'messageCreate',
 	execute: async(message) => {
   let client = message.client;
