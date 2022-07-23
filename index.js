@@ -6,6 +6,8 @@ import moment from "moment";
 import { REST } from '@discordjs/rest';
 import { Routes } from 'discord-api-types/v10';
 
+const token = config.token;
+
 client.commands = new Collection()
 
 
@@ -19,7 +21,7 @@ const commands = []
     client.commands.set(command.data.name, command)
   })
 
-const rest = new REST({ version: '10' }).setToken(config.token);
+const rest = new REST({ version: '10' }).setToken(token);
 
 client.on("ready", async () => {
         try {
@@ -46,4 +48,4 @@ readdirSync('./src/events').forEach(async file => {
 })
 //
 
-client.login(config.token)
+client.login(token)
