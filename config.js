@@ -1,5 +1,5 @@
 module.exports = {
   "prefix": "/",
-  "owner": "690639157013381220",
+  "owner": "547724553129033738",
   "token": "Bot Tokeniniz"
 }
