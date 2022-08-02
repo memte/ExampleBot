@@ -4,7 +4,6 @@ const { prefix, owner, token } = require("./config.js");
 const { readdirSync } = require("fs")
 const moment = require("moment");
 const { REST } = require('@discordjs/rest');
-const { SlashCommandBuilder } = require('@discordjs/builders');
 const { Routes } = require('discord-api-types/v10');
 
 client.commands = new Collection()
