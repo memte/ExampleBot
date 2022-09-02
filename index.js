@@ -14,12 +14,11 @@ const log = l => { console.log(`[${moment().format("DD-MM-YYYY HH:mm:ss")}] ${l}
 
 //command-handler
 const commands = [];
-const commandFiles = readdirSync('./src/commands').filter(file => file.endsWith('.js'));
-for (const file of commandFiles) {
+readdirSync('./src/commands').forEach(async file => {
   const command = require(`./src/commands/${file}`);
   commands.push(command.data.toJSON());
   client.commands.set(command.data.name, command);
-}
+})
 
 client.on("ready", async () => {
         try {
@@ -34,16 +33,14 @@ client.on("ready", async () => {
 })
 
 //event-handler
-const eventFiles = readdirSync('./src/events').filter(file => file.endsWith('.js'));
-
-for (const file of eventFiles) {
+readdirSync('./src/events').forEach(file => {
 	const event = require(`./src/events/${file}`);
 	if (event.once) {
 		client.once(event.name, (...args) => event.execute(...args));
 	} else {
 		client.on(event.name, (...args) => event.execute(...args));
 	}
-}
+})
 //
 
 client.login(token)
