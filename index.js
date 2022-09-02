@@ -16,7 +16,7 @@ const log = l => { console.log(`[${moment().format("DD-MM-YYYY HH:mm:ss")}] ${l}
 const commands = [];
 const commandFiles = readdirSync('./src/commands').filter(file => file.endsWith('.js'));
 for (const file of commandFiles) {
-	const command = require(`./src/commands/${file}`);
+  const command = require(`./src/commands/${file}`);
   commands.push(command.data.toJSON());
   client.commands.set(command.data.name, command);
 }
