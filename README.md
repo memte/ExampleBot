@@ -4,4 +4,4 @@ Destek olmak isterseniz projeye star verebilirsiniz.
  
 ![image](https://user-images.githubusercontent.com/63320170/175336722-373eaf92-1454-4bce-b97c-e8a629c2628e.png)
 
-### Not: config.js dosyasında ayarlamalarinizi yapmayi unutmayin.
+#### Not: config.js dosyasında ayarlamalarinizi yapmayi unutmayin.
