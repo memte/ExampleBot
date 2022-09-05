@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "start": "node src/index.js"
+    "start": "node index.js"
   },
   "dependencies": {
     "@discordjs/rest": "^1.0.0",
