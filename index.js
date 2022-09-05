@@ -35,7 +35,7 @@ client.on("ready", async () => {
 })
 
 //event-handler
-readdirSync('./events').forEach(async file => {
+readdirSync('./src/events').forEach(async file => {
 	const event = require(`./src/events/${file}`);
 	if (event.once) {
 		client.once(event.name, (...args) => event.execute(...args));
