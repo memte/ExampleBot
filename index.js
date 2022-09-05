@@ -1,6 +1,6 @@
 const { Client, Collection, GatewayIntentBits, Partials } = require("discord.js");
 const client = new Client({intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMembers, GatewayIntentBits.GuildEmojisAndStickers, GatewayIntentBits.GuildIntegrations, GatewayIntentBits.GuildWebhooks, GatewayIntentBits.GuildInvites, GatewayIntentBits.GuildVoiceStates, GatewayIntentBits.GuildPresences, GatewayIntentBits.GuildMessages, GatewayIntentBits.GuildMessageReactions, GatewayIntentBits.GuildMessageTyping, GatewayIntentBits.DirectMessages, GatewayIntentBits.DirectMessageReactions, GatewayIntentBits.DirectMessageTyping, GatewayIntentBits.MessageContent], shards: "auto", partials: [Partials.Message, Partials.Channel, Partials.GuildMember, Partials.Reaction, Partials.GuildScheduledEvent, Partials.User, Partials.ThreadMember]});
-const config = require("./config.js");
+const config = require("./src/config.js");
 const { readdirSync } = require("fs")
 const moment = require("moment");
 const { REST } = require('@discordjs/rest');
@@ -16,8 +16,8 @@ const log = l => { console.log(`[${moment().format("DD-MM-YYYY HH:mm:ss")}] ${l}
 
 //command-handler
 const commands = [];
-readdirSync('./commands').forEach(async file => {
-  const command = require(`./commands/${file}`);
+readdirSync('./src/commands').forEach(async file => {
+  const command = require(`./src/commands/${file}`);
   commands.push(command.data.toJSON());
   client.commands.set(command.data.name, command);
 })
@@ -36,7 +36,7 @@ client.on("ready", async () => {
 
 //event-handler
 readdirSync('./events').forEach(async file => {
-	const event = require(`./events/${file}`);
+	const event = require(`./src/events/${file}`);
 	if (event.once) {
 		client.once(event.name, (...args) => event.execute(...args));
 	} else {
