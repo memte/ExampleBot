@@ -1,7 +1,5 @@
 const { EmbedBuilder, InteractionType } = require("discord.js");
 const { readdirSync } = require("fs");
-const { owner } = require("../config.js");
-const commandFiles = readdirSync('./src/commands').filter(file => file.endsWith('.js'));
 
  module.exports = {
 	name: 'interactionCreate',
@@ -10,10 +8,10 @@ const commandFiles = readdirSync('./src/commands').filter(file => file.endsWith(
    if (!interaction.type == InteractionType.ApplicationCommand) return;
    if(interaction.user.bot) return;
 
-	for (const file of commandFiles) {
+	readdirSync('./src/commands').forEach(file => {
         const command = require(`../../src/commands/${file}`);
         if(interaction.commandName.toLowerCase() === command.data.name.toLowerCase()) {
         command.run(client, interaction)
     }
-	}
+	})
   }}
