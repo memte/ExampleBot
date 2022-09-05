@@ -15,8 +15,8 @@ const log = l => { console.log(`[${moment().format("DD-MM-YYYY HH:mm:ss")}] ${l}
 
 //command-handler
 const commands = []
-  readdirSync(`./src/commands`).forEach(async file => {
-    const command = await import(`./src/commands/${file}`).then(c => c.default)
+  readdirSync(`./commands`).forEach(async file => {
+    const command = await import(`./commands/${file}`).then(c => c.default)
     commands.push(command.data.toJSON());
     client.commands.set(command.data.name, command)
   })
@@ -38,8 +38,8 @@ client.on("ready", async () => {
 })
 
 //event-handler
-readdirSync('./src/events').forEach(async file => {
-	const event = await import(`./src/events/${file}`).then(x => x.default)
+readdirSync('./events').forEach(async file => {
+	const event = await import(`./events/${file}`).then(x => x.default)
 	if (event.once) {
 		client.once(event.name, (...args) => event.execute(...args));
 	} else {
