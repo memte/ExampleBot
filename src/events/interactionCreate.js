@@ -1,6 +1,5 @@
 import { EmbedBuilder, InteractionType } from "discord.js";
 import { readdirSync } from "fs";
-import config from "../config.js";
 
  export default {
 	name: 'interactionCreate',
