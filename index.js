@@ -6,7 +6,7 @@ import moment from "moment";
 import { REST } from '@discordjs/rest';
 import { Routes } from 'discord-api-types/v10';
 
-const token = config.token;
+let token = config.token;
 
 client.commands = new Collection()
 
