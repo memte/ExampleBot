@@ -5,7 +5,7 @@ import { readdirSync } from "fs";
 	name: 'interactionCreate',
 	execute: async(interaction) => {
    let client = interaction.client;
-   if (!interaction.type == InteractionType.ApplicationCommand) return;
+   if (interaction.type == InteractionType.ApplicationCommand) {
    if(interaction.user.bot) return;
 
    readdirSync('./src/commands').forEach(async file => {
@@ -14,4 +14,5 @@ import { readdirSync } from "fs";
         command.run(client, interaction)
     }
 	})
+}
   }}
