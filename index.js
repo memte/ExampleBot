@@ -43,6 +43,17 @@ readdirSync('./src/events').forEach(async file => {
 		client.on(event.name, (...args) => event.execute(...args));
 	}
 })
+
+//nodejs-events
+process.on("unhandledRejection", error => { 
+   console.log(error)
+ }) 
+process.on("uncaughtException", error => { 
+   console.log(error)
+ })  
+process.on("uncaughtExceptionMonitor", error => { 
+   console.log(error)
+ })
 //
 
 client.login(token)
