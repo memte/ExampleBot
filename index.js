@@ -45,14 +45,14 @@ readdirSync('./src/events').forEach(async file => {
 })
 
 //nodejs-events
-process.on("unhandledRejection", error => { 
-   console.log(error)
+process.on("unhandledRejection", e => { 
+   console.log(e)
  }) 
-process.on("uncaughtException", error => { 
-   console.log(error)
+process.on("uncaughtException", e => { 
+   console.log(e)
  })  
-process.on("uncaughtExceptionMonitor", error => { 
-   console.log(error)
+process.on("uncaughtExceptionMonitor", e => { 
+   console.log(e)
  })
 //
 
