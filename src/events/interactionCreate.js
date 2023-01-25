@@ -1,18 +1,12 @@
-import { EmbedBuilder, InteractionType } from "discord.js";
-import { readdirSync } from "fs";
+import { InteractionType } from "discord.js";
 
  export default {
 	name: 'interactionCreate',
 	execute: async(interaction) => {
-   let client = interaction.client;
-   if (interaction.type == InteractionType.ApplicationCommand) {
-   if(interaction.user.bot) return;
-
-   readdirSync('./src/commands').forEach(async file => {
-        const command = await import(`../../src/commands/${file}`).then(x => x.default)
-        if(interaction.commandName.toLowerCase() === command.data.name.toLowerCase()) {
-        command.run(client, interaction)
+         let client = interaction.client;
+   	 if (interaction.type == InteractionType.ApplicationCommand) {
+   	 if(interaction.user.bot) return;
+         const command = client.commands.get(interaction.commandName)
+         command.run(client, interaction)
     }
-	})
-}
   }}
