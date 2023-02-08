@@ -1,6 +1,6 @@
 ## V14 Slash Command Handler
 Proje discord.js v14 üzerine yazılmıştır.
-**Gerekli olan minimum nodejs versiyonu v16.9**
+**Gerekli olan minimum nodejs versiyonu: v16.9**
 Örnek kullanım [src/commands/ping.js](https://github.com/memte/v14-slash-command-handler/blob/main/src/commands/ping.js) dosyasında verilmiştir.
 Destek olmak isterseniz projeye star verebilirsiniz.
 
