@@ -32,7 +32,7 @@ readdirSync('./src/commands/normal').forEach(async file => {
 //slash-command-handler
 const slashcommands = [];
 readdirSync('./src/commands/slash').forEach(async file => {
-  const command = require(`./src/commands/slash/${file}`);
+  const command = await require(`./src/commands/slash/${file}`);
   slashcommands.push(command.data.toJSON());
   client.slashcommands.set(command.data.name, command);
 })
