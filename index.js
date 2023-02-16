@@ -19,7 +19,7 @@ const log = x => { console.log(`[${moment().format("DD-MM-YYYY HH:mm:ss")}] ${x}
 //command-handler
 const commands = []
 readdirSync('./src/commands/normal').forEach(async file => {
-  const command = await require(`./src/commands/normal/${file}`)
+  const command = await require(`./src/commands/normal/${file}`);
   if(command) {
     client.commands.set(command.name, command)
     commands.push(command.name, command);
