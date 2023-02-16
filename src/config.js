@@ -1,5 +1,5 @@
 export default {
-  prefix: "/",
+  prefix: "!",
   owner: "690639157013381220",
-  token: "Bot Tokeniniz"
+  token: "BOT Tokeni",
 }
