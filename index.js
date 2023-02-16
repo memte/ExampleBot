@@ -51,7 +51,7 @@ client.on("ready", async () => {
 
 //event-handler
 readdirSync('./src/events').forEach(async file => {
-	const event = await import(`./src/events/${file}`).then(x => x.default)
+	const event = await import(`./src/events/${file}`).then(c => c.default)
 	if (event.once) {
 		client.once(event.name, (...args) => event.execute(...args));
 	} else {
