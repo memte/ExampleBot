@@ -9,7 +9,8 @@ export default {
 	try {
          const command = client.slashcommands.get(interaction.commandName)
          command.run(client, interaction)
-	} catch {
+	} catch (e) {
+        console.error(e)
 	interaction.reply({content: "Komut çalıştırılırken bir sorunla karşılaşıldı! Lütfen tekrar deneyin.", ephemeral: true})
 	}
     }
