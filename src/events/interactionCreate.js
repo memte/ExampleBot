@@ -1,4 +1,4 @@
-import { InteractionType } from "discord.js";
+import { InteractionType, Events } from "discord.js";
 
 export default {
 	name: Events.InteractionCreate,
