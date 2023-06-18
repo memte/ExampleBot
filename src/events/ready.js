@@ -1,6 +1,6 @@
-import { ActivityType } from "discord.js";
+import { ActivityType, Events } from "discord.js";
 export default {
-	name: 'ready',
+	name: Events.ClientReady,
 	once: true,
 	execute(client) {
     let activities = [ `Developed by memte.`, `${client.user.username}` ], i = 0;
