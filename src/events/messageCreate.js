@@ -1,10 +1,10 @@
+import { Collection, Events } from "discord.js";
 import config from "../config.js";
-import { Collection } from "discord.js";
 import ms from "ms";
 const cooldown = new Collection()
 
 export default {
-	name: 'messageCreate',
+	name: Events.MessageCreate,
 	execute: async(message) => {
   let client = message.client;
   if (message.author.bot) return;
