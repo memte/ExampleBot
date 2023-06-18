@@ -1,7 +1,7 @@
 import { InteractionType } from "discord.js";
 
 export default {
-	name: 'interactionCreate',
+	name: Events.InteractionCreate,
 	execute: async(interaction) => {
          let client = interaction.client;
    	 if (interaction.type == InteractionType.ApplicationCommand) {
