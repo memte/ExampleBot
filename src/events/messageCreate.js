@@ -1,10 +1,10 @@
+const { Collection, Events } = require("discord.js")
 const config = require("../config.js")
-const { Collection } = require("discord.js")
 const ms = require("ms")
 const cooldown = new Collection()
 
 module.exports = {
-	name: 'messageCreate',
+	name: Events.MessageCreate,
 	execute: async(message) => {
   let client = message.client;
   if (message.author.bot) return;
