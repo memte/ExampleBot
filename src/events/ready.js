@@ -1,6 +1,6 @@
-const { ActivityType } = require("discord.js")
+const { ActivityType, Events } = require("discord.js")
 module.exports = {
-	name: 'ready',
+	name: Events.ClientReady,
 	once: true,
 	execute(client) {
     let activities = [ `Developed by memte.`, `${client.user.username}` ], i = 0;
