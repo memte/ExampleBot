@@ -1,4 +1,4 @@
-import { Collection, Events } from "discord.js";
+import { ChannelType, Collection, Events } from "discord.js";
 import config from "../config.js";
 import ms from "ms";
 const cooldown = new Collection()
@@ -8,7 +8,7 @@ export default {
 	execute: async(message) => {
   let client = message.client;
   if (message.author.bot) return;
-  if (message.channel.type === 'dm') return;
+  if (message.channel.type === ChannelType.DM) return;
   let prefix = config.prefix
   if(!message.content.startsWith(prefix)) return;
   const args = message.content.slice(prefix.length).trim().split(/ +/g); 
