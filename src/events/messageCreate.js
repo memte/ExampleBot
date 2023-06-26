@@ -1,4 +1,4 @@
-const { Collection, Events } = require("discord.js")
+const { ChannelType, Collection, Events } = require("discord.js")
 const config = require("../config.js")
 const ms = require("ms")
 const cooldown = new Collection()
@@ -8,7 +8,7 @@ module.exports = {
 	execute: async(message) => {
   let client = message.client;
   if (message.author.bot) return;
-  if (message.channel.type === 'dm') return;
+  if (message.channel.type === ChannelType.DM) return;
   let prefix = config.prefix
   if(!message.content.startsWith(prefix)) return;
   const args = message.content.slice(prefix.length).trim().split(/ +/g); 
