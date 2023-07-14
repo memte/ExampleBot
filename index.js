@@ -59,7 +59,7 @@ readdirSync('./src/events').forEach(async file => {
 	}
 })
 
-//nodejs-listeners
+//process-listeners
 process.on("unhandledRejection", e => { 
    console.log(e)
  }) 
