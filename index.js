@@ -5,7 +5,7 @@ const client = new Client({
   shards: "auto"
 });
 import config from "./src/config.js";
-import { readdirSync } from "fs";
+import { readdirSync } from "node:fs";
 import moment from "moment";
 import { REST } from '@discordjs/rest';
 import { Routes } from 'discord-api-types/v10';
@@ -43,8 +43,8 @@ function log(message) {
 };
 
 // Command Handler
-readdirSync('./src/commands/normal').forEach(async file => {
-  const command = await import(`./src/commands/normal/${file}`).then(c => c.default)
+readdirSync('./src/commands/prefix').forEach(async file => {
+  const command = await import(`./src/commands/prefix/${file}`).then(c => c.default)
   if(command) {
     client.commands.set(command.name, command)
     if(command.aliases && Array.isArray(command.aliases)) {
