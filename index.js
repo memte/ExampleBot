@@ -5,7 +5,7 @@ const client = new Client({
   shards: "auto"
 });
 const config = require("./src/config.js");
-const { readdirSync } = require("fs");
+const { readdirSync } = require("node:fs");
 const moment = require("moment");
 const { REST } = require("@discordjs/rest");
 const { Routes } = require("discord-api-types/v10");
@@ -23,8 +23,8 @@ function log(message) {
 };
 
 // Command handler
-readdirSync("./src/commands/normal").forEach(async (file) => {
-  const command = await require(`./src/commands/normal/${file}`);
+readdirSync("./src/commands/prefix").forEach(async (file) => {
+  const command = await require(`./src/commands/prefix/${file}`);
   if (command) {
     client.commands.set(command.name, command);
     if (command.aliases && Array.isArray(command.aliases)) {
