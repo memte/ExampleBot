@@ -21,6 +21,7 @@ const rest = new REST({ version: "10" }).setToken(token);
 function log(message) {
   console.log(`[${moment().format("DD-MM-YYYY HH:mm:ss")}] ${message}`);
 };
+client.log = (x) => log(x)
 
 // Command handler
 readdirSync("./src/commands/prefix").forEach(async (file) => {
@@ -42,8 +43,10 @@ readdirSync("./src/commands/slash").forEach(async (file) => {
   slashcommands.push(command.data.toJSON());
   client.slashcommands.set(command.data.name, command);
 });
-
-client.on(Events.ClientReady, async () => {
+async function whenReadyClient() {
+    if(!client.readyAt){
+        setTimeout(whenReadyClient, 1000)
+    } else {
   try {
     await rest.put(Routes.applicationCommands(client.user.id), {
       body: slashcommands,
@@ -51,8 +54,7 @@ client.on(Events.ClientReady, async () => {
   } catch (error) {
     console.error(error);
   }
-  log(`${client.user.username} Aktif Edildi!`);
-});
+}}
 
 // Event handler
 readdirSync("./src/events").forEach(async (file) => {
