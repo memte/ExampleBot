@@ -4,8 +4,8 @@ const ms = require("ms")
 const cooldown = new Collection()
 
 module.exports = {
-	name: Events.MessageCreate,
-	execute: async(message) => {
+ name: Events.MessageCreate,
+ execute: async(message) => {
   let client = message.client;
   if (message.author.bot) return;
   if (message.channel.type === ChannelType.DM) return;
