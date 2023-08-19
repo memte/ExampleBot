@@ -55,6 +55,7 @@ async function whenReadyClient() {
     console.error(error);
   }
 }}
+whenReadyClient()
 
 // Event handler
 readdirSync("./src/events").forEach(async (file) => {
