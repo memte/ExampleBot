@@ -7,8 +7,6 @@ const client = new Client({
 const config = require("./src/config.js");
 const { readdirSync } = require("node:fs");
 const moment = require("moment");
-const { REST } = require("@discordjs/rest");
-const { Routes } = require("discord-api-types/v10");
 
 let token = config.token;
 
@@ -17,7 +15,6 @@ client.commands = new Collection();
 client.slashcommands = new Collection();
 client.slashDatas = [];
 
-const rest = new REST({ version: "10" }).setToken(token);
 
 function log(message) {
   console.log(`[${moment().format("DD-MM-YYYY HH:mm:ss")}] ${message}`);
