@@ -7,10 +7,11 @@ module.exports = {
  once: true,
  execute(client) {
   const rest = new REST({ version: "10" }).setToken(client.token);
-  let activities = [ `Developed by memte.`, `${client.user.username}` ], i = 0;
+  const activities = [ `Developed by memte.`, `${client.user.username}` ]
+  let nowActivity = 0;
   function botPresence() {
-  client.user.presence.set({ activities: [{ name: `${activities[i++ % activities.length]}`, type: ActivityType.Listening }]})
-  setInterval(botPresence, 120000)
+  client.user.presence.set({ activities: [{ name: `${activities[nowActivity++ % activities.length]}`, type: ActivityType.Listening }]})
+  setTimeout(botPresence, 300000)
   }
   botPresence()
   
