@@ -1,11 +1,13 @@
 const { ActivityType, Events } = require("discord.js")
 const { REST } = require("@discordjs/rest");
 const { Routes } = require("discord-api-types/v10");
+const config = require("../config.js")
 
 module.exports = {
  name: Events.ClientReady,
  once: true,
  execute(client) {
+  let token = config.token
   const rest = new REST({ version: "10" }).setToken(token);
   let activities = [ `Developed by memte.`, `${client.user.username}` ], i = 0;
   function botPresence() {
