@@ -11,7 +11,7 @@ export default {
   let nowActivity = 0;
   function botPresence() {
   client.user.presence.set({ activities: [{ name: `${activities[nowActivity++ % activities.length]}`, type: ActivityType.Listening }]})
-  setInterval(botPresence, 120000)
+  setTimeout(botPresence, 300000)
   }
   botPresence()
   client.log(`${client.user.username} Aktif Edildi!`)
