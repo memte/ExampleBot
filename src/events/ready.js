@@ -7,7 +7,8 @@ export default {
  name: Events.ClientReady,
  once: true,
  execute(client) {
-  const rest = new REST({ version: "10" }).setToken(config.token);
+  let token = config.token
+  const rest = new REST({ version: "10" }).setToken(token);
   let activities = [ `Developed by memte.`, `${client.user.username}` ], i = 0;
   function botPresence() {
   client.user.presence.set({ activities: [{ name: `${activities[i++ % activities.length]}`, type: ActivityType.Listening }]})
