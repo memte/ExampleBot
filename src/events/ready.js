@@ -1,4 +1,6 @@
 import { ActivityType, Events } from "discord.js";
+const config = require("../config.js")
+
 export default {
  name: Events.ClientReady,
  once: true,
