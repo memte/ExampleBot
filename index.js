@@ -13,7 +13,7 @@ let token = config.token;
 client.commands = new Collection()
 client.commandaliases = new Collection()
 client.slashcommands = new Collection()
-client.slashDatas = new Collection()
+client.slashDatas = []
 
 let token = config.token;
 
