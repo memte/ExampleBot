@@ -12,9 +12,10 @@ const { Routes } = require("discord-api-types/v10");
 
 let token = config.token;
 
+client.commandaliases = new Collection();
 client.commands = new Collection();
 client.slashcommands = new Collection();
-client.commandaliases = new Collection();
+client.slashDatas = [];
 
 const rest = new REST({ version: "10" }).setToken(token);
 
@@ -40,22 +41,9 @@ readdirSync("./src/commands/prefix").forEach(async (file) => {
 const slashcommands = [];
 readdirSync("./src/commands/slash").forEach(async (file) => {
   const command = await require(`./src/commands/slash/${file}`);
-  slashcommands.push(command.data.toJSON());
+  client.slashDatas.push(command.data.toJSON());
   client.slashcommands.set(command.data.name, command);
 });
-async function whenReadyClient() {
-    if(!client.readyAt){
-        setTimeout(whenReadyClient, 1000)
-    } else {
-  try {
-    await rest.put(Routes.applicationCommands(client.user.id), {
-      body: slashcommands,
-    });
-  } catch (error) {
-    console.error(error);
-  }
-}}
-whenReadyClient()
 
 // Event handler
 readdirSync("./src/events").forEach(async (file) => {
