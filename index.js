@@ -13,7 +13,7 @@ let token = config.token;
 client.commands = new Collection()
 client.commandaliases = new Collection()
 client.slashcommands = new Collection()
-client.slashDatas = []
+client.slashdatas = []
 
 let token = config.token;
 
@@ -37,7 +37,7 @@ readdirSync('./src/commands/prefix').forEach(async file => {
 const slashcommands = [];
 readdirSync('./src/commands/slash').forEach(async file => {
   const command = await import(`./src/commands/slash/${file}`).then(c => c.default)
-  client.slashDatas.push(command.data.toJSON());
+  client.slashdatas.push(command.data.toJSON());
   client.slashcommands.set(command.data.name, command);
 })
 
