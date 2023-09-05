@@ -18,7 +18,7 @@ export default {
   //
   try {
     await rest.put(Routes.applicationCommands(client.user.id), {
-      body: client.slashDatas,
+      body: client.slashdatas,
     });
   } catch (error) {
     console.error(error);
