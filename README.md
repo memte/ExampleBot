@@ -8,4 +8,4 @@
 
 - **Not: [config.js](https://github.com/memte/v14-slash-command-handler/blob/main/src/config.js) dosyasında ayarlamalarinizi yapmayi unutmayın.**
 
-[ES6 Module versiyonu için tıklayınız.](https://github.com/memte/v14-slash-command-handler/tree/es6)
+**[ES6 Module versiyonu için tıklayınız.](https://github.com/memte/v14-slash-command-handler/tree/es6)**
