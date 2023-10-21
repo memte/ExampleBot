@@ -5,7 +5,7 @@ const { Routes } = require("discord-api-types/v10");
 module.exports = {
  name: Events.ClientReady,
  once: true,
- async execute(client) {
+ execute: async(interaction) => {
   const rest = new REST({ version: "10" }).setToken(client.token);
   const activities = [ `Developed by memte.`, `${client.user.username}` ]
   let nowActivity = 0;
