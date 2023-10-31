@@ -1,5 +1,5 @@
 export default {
   prefix: "!",
-  owner: "690639157013381220",
+  owner: "Bot Sahip ID",
   token: "BOT Tokeni",
 }
