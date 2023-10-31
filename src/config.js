@@ -1,5 +1,5 @@
 module.exports = {
   prefix: "!",
-  owner: "Bot Sahibi ID",
+  owner: "Bot Sahip ID",
   token: "BOT Tokeni",
 }
