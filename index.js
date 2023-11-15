@@ -22,8 +22,9 @@ function log(message) {
 client.log = log
 
 // Command handler
-readdirSync("./src/commands/prefix").forEach(async (file) => {
-  const command = await require(`./src/commands/prefix/${file}`);
+readdirSync("./src/commands/prefix").forEach(async (folder) => {
+readdirSync(`./src/commands/prefix/${folder}`).forEach(async (file) => {
+  const command = await require(`./src/commands/prefix/${folder}/${file}`);
   if (command) {
     client.commands.set(command.name, command);
     if (command.aliases && Array.isArray(command.aliases)) {
@@ -32,14 +33,17 @@ readdirSync("./src/commands/prefix").forEach(async (file) => {
       });
     }
   }
+})
 });
 
 // Slash command handler
 const slashcommands = [];
-readdirSync("./src/commands/slash").forEach(async (file) => {
-  const command = await require(`./src/commands/slash/${file}`);
+readdirSync("./src/commands/slash").forEach(async (folder) => {
+readdirSync(`./src/commands/slash/${folder}`).forEach(async (file) => {
+  const command = await require(`./src/commands/slash/${folder}/${file}`);
   client.slashdatas.push(command.data.toJSON());
   client.slashcommands.set(command.data.name, command);
+})
 });
 
 // Event handler
