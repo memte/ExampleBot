@@ -2,7 +2,7 @@ import { Collection, Events, InteractionType } from "discord.js";
 import config from "../config.js";
 const cooldown = new Collection()
 
-export default {s
+export default {
  name: Events.InteractionCreate,
  execute: async(interaction) => {
     let client = interaction.client;
