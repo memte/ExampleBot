@@ -3,7 +3,7 @@ import config from "../config.js";
 import ms from "ms";
 const cooldown = new Collection()
 
-export default {s
+export default {
  name: Events.MessageCreate,
  execute: async(message) => {
     let client = message.client;
