@@ -11,7 +11,7 @@ module.exports = {
     
       try {
         const command = client.slashcommands.get(interaction.commandName)
-        if(command.ownerOnly && message.author.id !== config.owner) return;
+        if(command.ownerOnly && interaction.user.id !== config.owner) return;
         if (command.cooldown) {
         if (cooldown.has(`${command.name}-${interaction.user.id}`)) {
         const nowDate = interaction.createdTimestamp;
