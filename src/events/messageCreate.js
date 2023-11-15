@@ -23,7 +23,7 @@ module.exports = {
     if (!command) command = client.commands.get(client.commandaliases.get(cmd));
 
     if (command) {
-      if(command.ownerOnly && message.author.id !== config.owner) return;
+        if(command.ownerOnly && message.author.id !== config.owner) return message.reply({content: "Bu komutu sadece **geliştiricim** kullanabilir."});
       if (command.cooldown) {
         if (cooldown.has(`${command.name}-${message.author.id}`)) {
         const nowDate = message.createdTimestamp;
