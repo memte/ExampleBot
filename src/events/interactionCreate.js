@@ -1,5 +1,6 @@
 const { Collection, Events, InteractionType } = require("discord.js");
 const cooldown = new Collection();
+const config = require("../config.js");
 
 module.exports = {
  name: Events.InteractionCreate,
