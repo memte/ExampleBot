@@ -15,30 +15,33 @@ client.commandaliases = new Collection()
 client.slashcommands = new Collection()
 client.slashdatas = []
 
-let token = config.token;
-
 function log(message) {
   console.log(`[${moment().format("DD-MM-YYYY HH:mm:ss")}] ${message}`);
 };
 client.log = log
 
 // Command Handler
-readdirSync('./src/commands/prefix').forEach(async file => {
-  const command = await import(`./src/commands/prefix/${file}`).then(c => c.default)
+readdirSync('./src/commands/prefix').forEach(async folder => {
+readdirSync(`./src/commands/prefix/${folder}`).forEach(async file => {
+  const command = await import(`./src/commands/prefix/${folder}/${file}`).then(c => c.default)
   if(command) {
     client.commands.set(command.name, command)
     if(command.aliases && Array.isArray(command.aliases)) {
        command.aliases.forEach(alias => {
         client.commandaliases.set(alias, command.name)  
+      })
+}}
 })
-}}})
+})
 
 // Slash Command Handler
 const slashcommands = [];
-readdirSync('./src/commands/slash').forEach(async file => {
-  const command = await import(`./src/commands/slash/${file}`).then(c => c.default)
+readdirSync('./src/commands/slash').forEach(async folder => {
+readdirSync(`./src/commands/slash/${folder}`).forEach(async file => {
+  const command = await import(`./src/commands/slash/${folder}/${file}`).then(c => c.default)
   client.slashdatas.push(command.data.toJSON());
   client.slashcommands.set(command.data.name, command);
+})
 })
 
 // Event Handler
