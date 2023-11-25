@@ -20,7 +20,7 @@ export default {
     if (cmd.length === 0) return;
 
     let command = client.commands.get(cmd);
-    if (!command) command = client.commands.get(client.commandaliases.get(cmd));
+    if (!command) command = client.commands.get(client.commandAliases.get(cmd));
 
     if (command) {
         if(command.ownerOnly && message.author.id !== config.owner) return message.reply({content: "Bu komutu sadece **geliştiricim** kullanabilir."});

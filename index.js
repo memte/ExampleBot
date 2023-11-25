@@ -11,9 +11,9 @@ import moment from "moment";
 let token = config.token;
 
 client.commands = new Collection()
-client.commandaliases = new Collection()
-client.slashcommands = new Collection()
-client.slashdatas = []
+client.commandAliases = new Collection()
+client.slashCommands = new Collection()
+client.slashDatas = []
 
 function log(message) {
   console.log(`[${moment().format("DD-MM-YYYY HH:mm:ss")}] ${message}`);
@@ -28,7 +28,7 @@ readdirSync(`./src/commands/prefix/${folder}`).forEach(async file => {
     client.commands.set(command.name, command)
     if(command.aliases && Array.isArray(command.aliases)) {
        command.aliases.forEach(alias => {
-        client.commandaliases.set(alias, command.name)  
+        client.commandAliases.set(alias, command.name)  
       })
 }}
 })
@@ -39,8 +39,8 @@ const slashcommands = [];
 readdirSync('./src/commands/slash').forEach(async folder => {
 readdirSync(`./src/commands/slash/${folder}`).forEach(async file => {
   const command = await import(`./src/commands/slash/${folder}/${file}`).then(c => c.default)
-  client.slashdatas.push(command.data.toJSON());
-  client.slashcommands.set(command.data.name, command);
+  client.slashDatas.push(command.data.toJSON());
+  client.slashCommands.set(command.data.name, command);
 })
 })
 
