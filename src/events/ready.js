@@ -23,7 +23,7 @@ module.exports = {
 
     try {
       await rest.put(Routes.applicationCommands(client.user.id), {
-        body: client.slashdatas,
+        body: client.slashDatas,
       });
     } catch (error) {
       console.error(error);

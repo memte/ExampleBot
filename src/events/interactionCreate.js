@@ -11,7 +11,7 @@ module.exports = {
       if (interaction.user.bot) return;
     
       try {
-        const command = client.slashcommands.get(interaction.commandName)
+        const command = client.slashCommands.get(interaction.commandName)
         if(command.ownerOnly && interaction.user.id !== config.owner) return interaction.reply({content: "Bu komutu sadece **geliştiricim** kullanabilir.", ephemeral: true});
         if (command.cooldown) {
         if (cooldown.has(`${command.name}-${interaction.user.id}`)) {
