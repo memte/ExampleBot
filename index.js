@@ -21,7 +21,7 @@ function log(message) {
 };
 client.log = log
 
-// Command handler
+// Command Handler
 readdirSync("./src/commands/prefix").forEach(async (folder) => {
 readdirSync(`./src/commands/prefix/${folder}`).forEach(async (file) => {
   const command = await require(`./src/commands/prefix/${folder}/${file}`);
@@ -36,7 +36,7 @@ readdirSync(`./src/commands/prefix/${folder}`).forEach(async (file) => {
 })
 });
 
-// Slash command handler
+// Slash Command Handler
 const slashcommands = [];
 readdirSync("./src/commands/slash").forEach(async (folder) => {
 readdirSync(`./src/commands/slash/${folder}`).forEach(async (file) => {
@@ -46,7 +46,7 @@ readdirSync(`./src/commands/slash/${folder}`).forEach(async (file) => {
 })
 });
 
-// Event handler
+// Event Handler
 readdirSync("./src/events").forEach(async (file) => {
   const event = await require(`./src/events/${file}`);
   if (event.once) {
@@ -56,7 +56,7 @@ readdirSync("./src/events").forEach(async (file) => {
   }
 });
 
-// Process listeners
+// Process Listeners
 process.on("unhandledRejection", (e) => {
   console.log(e);
 });
