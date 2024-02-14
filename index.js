@@ -1,4 +1,4 @@
-import { Client, Partials, GatewayIntentBits } from "discord.js";
+import { Client, GatewayIntentBits, Partials } from "discord.js";
 const client = new Client({
   intents: Object.values(GatewayIntentBits), 
   partials: Object.values(Partials),
