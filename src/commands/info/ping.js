@@ -1,7 +1,7 @@
 const { EmbedBuilder, PermissionsBitField } = require("discord.js");
 const { SlashCommandBuilder } = require("@discordjs/builders");
 
- const commandBase = {
+ exports.commandBase = {
   prefixData: {
   name: "ping",
   aliases: ["pong"]
@@ -19,4 +19,3 @@ const { SlashCommandBuilder } = require("@discordjs/builders");
     interaction.reply(`Pong 🏓`)
   }
 }
-module.exports = { commandBase }
