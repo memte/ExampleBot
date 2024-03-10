@@ -32,7 +32,7 @@ module.exports = {
             content: `Cooldown şu an aktif, lütfen <t:${Math.floor(new Date(nowDate + waitedDate).getTime() / 1000)}:R> tekrar deneyin.`,
           }).then((msg) => setTimeout(() => msg.delete(), cooldown.get(`${command.name}-${message.author.id}`) - Date.now() + 1000));
         }
-          command.run(client, message, args);
+          command.prefixRun(client, message, args);
 
           cooldown.set(`${command.name}-${message.author.id}`, Date.now() + command.cooldown);
 
@@ -40,7 +40,7 @@ module.exports = {
             cooldown.delete(`${command.name}-${message.author.id}`);
           }, command.cooldown);
         } else {
-          command.run(client, message, args);
+          command.prefixRun(client, message, args);
         }
       }
   }
