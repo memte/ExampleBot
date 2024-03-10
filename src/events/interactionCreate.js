@@ -21,7 +21,7 @@ export default {
             ephemeral: true
           }).then((msg) => setTimeout(() => msg.delete(), cooldown.get(`${command.name}-${interaction.user.id}`) - Date.now() + 1000));
         }
-          command.run(client, interaction);
+          command.slashRun(client, interaction);
 
           cooldown.set(`${command.name}-${interaction.user.id}`, Date.now() + command.cooldown);
 
@@ -29,7 +29,7 @@ export default {
             cooldown.delete(`${command.name}-${interaction.user.id}`);
           }, command.cooldown + 1000);
         } else {
-        command.run(client, interaction)
+        command.slashRun(client, interaction)
       }
       } catch (e) {
         console.error(e)
