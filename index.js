@@ -10,8 +10,8 @@ import { readdirSync } from "node:fs";
 let token = config.token;
 
 readdirSync("./src/utils").forEach(async (file) => {
-  const util = await import(`./src/utils/${file}`);
-  const utilFile = util.default;
+  const utilFile = await import(`./src/utils/${file}`);
+  const util = utilFile.default;
   utilFile.execute(client);
 });
 
