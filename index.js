@@ -1,18 +1,18 @@
-import { Client, GatewayIntentBits, Partials } from "discord.js";
+import {Client, GatewayIntentBits, Partials} from 'discord.js';
 const client = new Client({
-  intents: Object.values(GatewayIntentBits), 
-  partials: Object.values(Partials),
-  shards: "auto"
+	intents: Object.values(GatewayIntentBits),
+	partials: Object.values(Partials),
+	shards: 'auto',
 });
-import config from "./src/config.js";
-import { readdirSync } from "node:fs";
+import config from './src/config.js';
+import {readdirSync} from 'node:fs';
 
-let token = config.token;
+const {token} = config;
 
-readdirSync("./src/utils").forEach(async (file) => {
-  const utilFile = await import(`./src/utils/${file}`);
-  const util = utilFile.default;
-  utilFile.execute(client);
+readdirSync('./src/utils').forEach(async file => {
+	const utilFile = await import(`./src/utils/${file}`);
+	const util = utilFile.default;
+	utilFile.execute(client);
 });
 
-client.login(token)
+client.login(token);
