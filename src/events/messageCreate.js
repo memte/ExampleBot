@@ -1,47 +1,59 @@
-const { ChannelType, Collection, Events } = require("discord.js");
-const config = require("../config.js");
-const ms = require("ms");
+const {ChannelType, Collection, Events} = require('discord.js');
+const config = require('../config.js');
 const cooldown = new Collection();
 
 module.exports = {
-  name: Events.MessageCreate,
-  execute: async (message) => {
-    let client = message.client;
+	name: Events.MessageCreate,
+	async execute(message) {
+		const {client} = message;
 
-    if (message.author.bot) return;
-    if (message.channel.type === ChannelType.DM) return;
+		if (message.author.bot) {
+			return;
+		}
 
-    let prefix = config.prefix;
-    if (!message.content.startsWith(prefix)) return;
+		if (message.channel.type === ChannelType.DM) {
+			return;
+		}
 
-    const args = message.content.slice(prefix.length).trim().split(/ +/g);
-    const cmd = args.shift().toLowerCase();
+		const {prefix} = config;
+		if (!message.content.startsWith(prefix)) {
+			return;
+		}
 
-    if (cmd.length === 0) return;
+		const args = message.content.slice(prefix.length).trim().split(/ +/g);
+		const cmd = args.shift().toLowerCase();
 
-    let command = client.commands.get(cmd);
-    if (!command) command = client.commands.get(client.commandAliases.get(cmd));
+		if (cmd.length === 0) {
+			return;
+		}
 
-    if (command) {
-        if(command.ownerOnly && message.author.id !== config.owner) return message.reply({content: "Bu komutu sadece **geliştiricim** kullanabilir."});
-      if (command.cooldown) {
-        if (cooldown.has(`${command.name}-${message.author.id}`)) {
-        const nowDate = message.createdTimestamp;
-        const waitedDate = cooldown.get(`${command.name}-${message.author.id}`) - nowDate;
-          return message.reply({
-            content: `Cooldown şu an aktif, lütfen <t:${Math.floor(new Date(nowDate + waitedDate).getTime() / 1000)}:R> tekrar deneyin.`,
-          }).then((msg) => setTimeout(() => msg.delete(), cooldown.get(`${command.name}-${message.author.id}`) - Date.now() + 1000));
-        }
-          command.prefixRun(client, message, args);
+		let command = client.commands.get(cmd);
+		command ||= client.commands.get(client.commandAliases.get(cmd));
 
-          cooldown.set(`${command.name}-${message.author.id}`, Date.now() + command.cooldown);
+		if (command) {
+			if (command.ownerOnly && message.author.id !== config.owner) {
+				return message.reply({content: 'Bu komutu sadece **geliştiricim** kullanabilir.'});
+			}
 
-          setTimeout(() => {
-            cooldown.delete(`${command.name}-${message.author.id}`);
-          }, command.cooldown);
-        } else {
-          command.prefixRun(client, message, args);
-        }
-      }
-  }
+			if (command.cooldown) {
+				if (cooldown.has(`${command.name}-${message.author.id}`)) {
+					const nowDate = message.createdTimestamp;
+					const waitedDate = cooldown.get(`${command.name}-${message.author.id}`) - nowDate;
+					return message.reply({
+						content: `Cooldown şu an aktif, lütfen <t:${Math.floor(new Date(nowDate + waitedDate).getTime() / 1000)}:R> tekrar deneyin.`,
+					}).then(msg => setTimeout(() => msg.delete(), cooldown.get(`${command.name}-${message.author.id}`) - Date.now() + 1000));
+				}
+
+				command.prefixRun(client, message, args);
+
+				cooldown.set(`${command.name}-${message.author.id}`, Date.now() + command.cooldown);
+
+				setTimeout(() => {
+					cooldown.delete(`${command.name}-${message.author.id}`);
+				}, command.cooldown);
+			} else {
+				command.prefixRun(client, message, args);
+			}
+		}
+	},
 };
