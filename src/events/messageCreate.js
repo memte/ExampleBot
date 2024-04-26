@@ -1,6 +1,5 @@
 import {ChannelType, Collection, Events} from 'discord.js';
 import config from '../config.js';
-import ms from 'ms';
 const cooldown = new Collection();
 
 export default {
