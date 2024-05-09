@@ -15,3 +15,4 @@ readdirSync('./src/utils').map(async file => {
 });
 
 client.login(token);
+e
