@@ -12,7 +12,7 @@ const {token} = config;
 readdirSync('./src/utils').forEach(async file => {
 	const utilFile = await import(`./src/utils/${file}`);
 	const util = utilFile.default;
-	utilFile.execute(client);
+	util.execute(client);
 });
 
 client.login(token);
