@@ -7,7 +7,6 @@ module.exports = {
 	once: true,
 	async execute(client) {
 		const rest = new REST({version: '10'}).setToken(client.token);
-		const activities = ['', `${client.user.username}`];
 
 		client.user.presence.set({
 			activities: [{name: 'Developed by memte.', type: ActivityType.Listening}],
