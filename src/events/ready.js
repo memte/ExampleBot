@@ -7,17 +7,11 @@ module.exports = {
 	once: true,
 	async execute(client) {
 		const rest = new REST({version: '10'}).setToken(client.token);
-		const activities = ['Developed by memte.', `${client.user.username}`];
-		let nowActivity = 0;
+		const activities = ['', `${client.user.username}`];
 
-		const botPresence = () => {
-			client.user.presence.set({
-				activities: [{name: `${activities[nowActivity++ % activities.length]}`, type: ActivityType.Listening}],
-			});
-			setTimeout(botPresence, 300000);
-		};
-
-		botPresence();
+		client.user.presence.set({
+			activities: [{name: 'Developed by memte.', type: ActivityType.Listening}],
+		});
 
 		client.log(`${client.user.username} Aktif Edildi!`);
 
