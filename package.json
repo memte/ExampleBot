@@ -6,7 +6,6 @@
   "license": "MIT",
   "dependencies": {
     "discord.js": "^14.14.1",
-    "express": "^4.18.2",
     "fs": "^0.0.2",
     "lodash.uniqwith": "^4.5.0",
     "moment": "^2.30.1"
