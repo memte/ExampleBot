@@ -1,5 +1,4 @@
 # V14 Slash Command Handler
-<sub>test
 - **Proje, `discord.js` v14 üzerine inşa edilmiştir.**
 - **Gerekli minimum Node.js versiyonu: v16.11**
 - **Komutlar için örnek ayarlamalar, [src/commands/info/ping.js](https://github.com/memte/v14-slash-command-handler/blob/main/src/commands/info/ping.js) dosyasında bulunmaktadır.**  
