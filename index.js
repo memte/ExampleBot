@@ -1,7 +1,7 @@
-const {Client, GatewayIntentBits, Partials} = require('discord.js');
+const {Client, Intents} = require('discord.js');
 const client = new Client({
-	intents: Object.values(GatewayIntentBits),
-	partials: Object.values(Partials),
+	intents: Object.values(Intents.FLAGS),
+	partials: ['USER', 'CHANNEL', 'GUILD_MEMBER', 'MESSAGE', 'REACTION', 'GUILD_SCHEDULED_EVENT'],
 	shards: 'auto',
 });
 const config = require('./src/config.js');
