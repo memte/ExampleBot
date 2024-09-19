@@ -7,6 +7,6 @@
 
 ![image](https://user-images.githubusercontent.com/63320170/175336722-373eaf92-1454-4bce-b97c-e8a629c2628e.png)
 
-- **Not: Ayarlarınızı [config.js](https://github.com/memte/v14-slash-command-handler/blob/main/src/config.js) dosyasında yapmayı unutmayın.**
+- **Not: Ayarlarınızı [config.js](https://github.com/memte/ExampleBot/blob/v14/src/config.js) dosyasında yapmayı unutmayın.**
 
-### [ES6 Module versiyonu için buraya tıklayın.](https://github.com/memte/v14-slash-command-handler/tree/es6)
+### [ES6 Module versiyonu için buraya tıklayın.](https://github.com/memte/ExampleBot/tree/v14-es6)
