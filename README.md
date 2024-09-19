@@ -10,4 +10,4 @@
 
 - **Not: Ayarlarınızı [config.js](https://github.com/memte/ExampleBot/blob/v13/src/config.js) dosyasında yapmayı unutmayın.**
 
-### [ES6 Module versiyonu için buraya tıklayın.](https://github.com/memte/ExampleBot/tree/v13)
+### [ES6 Module versiyonu için buraya tıklayın.](https://github.com/memte/ExampleBot/tree/v13-es6)
