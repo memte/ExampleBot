@@ -9,4 +9,5 @@
 
 - **Not: Ayarlarınızı [config.js](https://github.com/memte/ExampleBot/blob/v14/src/config.js) dosyasında yapmayı unutmayın.**
 
+### [Discord.js V13 versiyonu için buraya tıklayın.](https://github.com/memte/ExampleBot/tree/v13)
 ### [ES6 Module versiyonu için buraya tıklayın.](https://github.com/memte/ExampleBot/tree/v14-es6)
