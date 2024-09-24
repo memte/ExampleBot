@@ -12,7 +12,7 @@ export default {
 			activities: [{name: 'Developed by memte.', type: ActivityType.Listening}],
 		});
 
-		client.log(`${client.user.username} Aktif Edildi!`);
+		client.log(`${client.user.username} Active!`);
 		//
 		try {
 			await rest.put(Routes.applicationCommands(client.user.id), {
