@@ -14,7 +14,7 @@ export default {
 			try {
 				const command = client.slashCommands.get(interaction.commandName);
 				if (command.ownerOnly && interaction.user.id !== config.owner) {
-					return interaction.reply({content: 'Bu komutu sadece **geliştiricim** kullanabilir.', ephemeral: true});
+					return interaction.reply({content: 'Only my **developer** can use this command.', ephemeral: true});
 				}
 
 				if (command.cooldown) {
@@ -22,7 +22,7 @@ export default {
 						const nowDate = interaction.createdTimestamp;
 						const waitedDate = cooldown.get(`${command.name}-${interaction.user.id}`) - nowDate;
 						return interaction.reply({
-							content: `Cooldown şu an aktif, lütfen <t:${Math.floor(new Date(nowDate + waitedDate).getTime() / 1000)}:R> tekrar deneyin.`,
+							content: `Cooldown is currently active, please try again <t:${Math.floor(new Date(nowDate + waitedDate).getTime() / 1000)}:R>.`,
 							ephemeral: true,
 						}).then(() => setTimeout(() => interaction.deleteReply(), cooldown.get(`${command.name}-${interaction.user.id}`) - Date.now() + 1000));
 					}
@@ -39,7 +39,7 @@ export default {
 				}
 			} catch (e) {
 				console.error(e);
-				interaction.reply({content: 'Komut çalıştırılırken bir sorunla karşılaşıldı! Lütfen tekrar deneyin.', ephemeral: true});
+				interaction.reply({content: 'An error occurred while executing the command! Please try again.', ephemeral: true});
 			}
 		}
 	},
