@@ -33,7 +33,7 @@ module.exports = {
 				const nowDate = message.createdTimestamp;
 				const waitedDate = new Date(nowDate + (cooldown.get(`${command.name}${message.author.id}`) - Date.now())).getTime();
 				if (cooldown.has(`${command.name}${message.author.id}`)) {
-					return message.reply({content: `Cooldown şuan aktif lütfen <t:${Math.floor(waitedDate / 1000)}:R> tekrar deneyin.`}).then(msg => setTimeout(() => msg.delete(), cooldown.get(`${command.name}${message.author.id}`) - Date.now()));
+					return message.reply({content: `Cooldown is currently active, please try again <t:${Math.floor(waitedDate / 1000)}:R>.`}).then(msg => setTimeout(() => msg.delete(), cooldown.get(`${command.name}${message.author.id}`) - Date.now()));
 				}
 
 				command.prefixRun(client, message, args);
