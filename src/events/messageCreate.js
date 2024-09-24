@@ -32,7 +32,7 @@ export default {
 
 		if (command) {
 			if (command.ownerOnly && message.author.id !== config.owner) {
-				return message.reply({content: 'Bu komutu sadece **geliştiricim** kullanabilir.'});
+				return message.reply({content: 'Only my **developer** can use this command.'});
 			}
 
 			if (command.cooldown) {
