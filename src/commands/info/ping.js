@@ -9,9 +9,9 @@ exports.commandBase = {
 	slashData: new SlashCommandBuilder()
 		.setName('ping')
 		.setDescription('Pong!'),
-	// Komutu geliştirmek istersen guide: https://discordjs.guide/slash-commands/advanced-creation.html
-	cooldown: 5000, // 1 saniye = 1000 ms / cooldown olmasını istemezseniz 0 yazın.
-	ownerOnly: false, // Komutu sadece geliştiricinin kullanabilmesini istersen true olarak değiştir
+	// If you want to improve the command, check the guide: https://discordjs.guide/slash-commands/advanced-creation.html
+	cooldown: 5000, // 1 second = 1000 ms / set to 0 if you don't want a cooldown.
+	ownerOnly: false, // Set to true if you want the command to be usable only by the developer.
 	async prefixRun(client, message, args) {
 		message.reply('Pong 🏓');
 	},
