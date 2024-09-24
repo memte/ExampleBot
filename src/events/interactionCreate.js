@@ -20,7 +20,7 @@ module.exports = {
 					const nowDate = interaction.createdTimestamp;
 					const waitedDate = new Date(nowDate + (cooldown.get(`${command.name}${interaction.user.id}`) - Date.now())).getTime();
 					if (cooldown.has(`${command.name}${interaction.user.id}`)) {
-						return interaction.reply({content: `Cooldown şuan aktif lütfen <t:${Math.floor(waitedDate / 1000)}:R> tekrar deneyin.`, ephemeral: true}).then(msg => setTimeout(() => interaction.deleteReply(), cooldown.get(`${command.name}${interaction.user.id}`) - Date.now()));
+						return interaction.reply({content: `Cooldown is currently active, please try again <t:${Math.floor(waitedDate / 1000)}:R>.`, ephemeral: true}).then(msg => setTimeout(() => interaction.deleteReply(), cooldown.get(`${command.name}${interaction.user.id}`) - Date.now()));
 					}
 
 					command.prefixRun(client, interaction);
@@ -34,7 +34,7 @@ module.exports = {
 			}
 		} catch (e) {
 			console.error(e);
-			interaction.reply({content: 'Komut çalıştırılırken bir sorunla karşılaşıldı! Lütfen tekrar deneyin.', ephemeral: true});
+			interaction.reply({content: 'An error occurred while executing the command! Please try again.', ephemeral: true});
 		}
 	},
 };
