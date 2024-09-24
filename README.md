@@ -1,4 +1,4 @@
-# Example Discord Bot - V13
+# Example Discord Bot Handler - V13
 
 - **Project built on `discord.js` v13.**
 - **Minimum required Node.js version: v16.6.**
