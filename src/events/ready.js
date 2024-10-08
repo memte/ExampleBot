@@ -9,7 +9,7 @@ module.exports = {
 		const rest = new REST({version: '10'}).setToken(client.token);
 
 		client.user.presence.set({
-			activities: [{name: 'Developed by memte.', type: ActivityType.Listening}],
+			activities: [{name: 'Square Discord Bot', type: ActivityType.Listening}],
 		});
 
 		client.log(`${client.user.username} Active!`);
