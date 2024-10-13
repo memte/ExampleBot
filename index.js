@@ -1,16 +1,17 @@
-const {Client, Intents} = require('discord.js');
+import {Client, Intents} from 'discord.js';
 const client = new Client({
 	intents: Object.values(Intents.FLAGS),
 	partials: ['USER', 'CHANNEL', 'GUILD_MEMBER', 'MESSAGE', 'REACTION', 'GUILD_SCHEDULED_EVENT'],
 	shards: 'auto',
 });
-const config = require('./src/config.js');
-const {readdirSync} = require('node:fs');
+import config from './src/config.js';
+import {readdirSync} from 'node:fs';
 
 const {token} = config;
 
 readdirSync('./src/utils').map(async file => {
-	const util = await require(`./src/utils/${file}`);
+	const utilFile = await import(`./src/utils/${file}`);
+	const util = utilFile.default;
 	util.execute(client);
 });
 

@@ -2,6 +2,7 @@
   "scripts": {
     "start": "node index.js"
   },
+  "type": "module",
   "license": "MIT",
   "dependencies": {
     "@discordjs/rest": "^2.2.0",

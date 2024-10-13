@@ -1,7 +1,7 @@
-const {Collection} = require('discord.js');
-const {readdirSync} = require('node:fs');
+import {Collection} from 'discord.js';
+import {readdirSync} from 'node:fs';
 
-module.exports = {
+export default {
 	async execute(client) {
 		client.commands = new Collection();
 		client.commandAliases = new Collection();
