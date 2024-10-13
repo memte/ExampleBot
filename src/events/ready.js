@@ -1,8 +1,8 @@
-const {ActivityType, Events} = require('discord.js');
-const {REST} = require('@discordjs/rest');
-const {Routes} = require('discord-api-types/v10');
+import {ActivityType, Events} from 'discord.js';
+import {REST} from '@discordjs/rest';
+import {Routes} from 'discord-api-types/v10';
 
-module.exports = {
+export default {
 	name: Events.ClientReady,
 	once: true,
 	async execute(client) {
@@ -13,7 +13,7 @@ module.exports = {
 		});
 
 		client.log(`${client.user.username} Active!`);
-
+		//
 		try {
 			await rest.put(Routes.applicationCommands(client.user.id), {
 				body: client.slashDatas,

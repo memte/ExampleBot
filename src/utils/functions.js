@@ -1,6 +1,6 @@
-const moment = require('moment');
+import moment from 'moment';
 
-module.exports = {
+export default {
 	async execute(client) {
 		client.log = function (message) {
 			console.log(`[${moment().format('DD-MM-YYYY HH:mm:ss')}] ${message}`);

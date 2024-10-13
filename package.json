@@ -2,6 +2,7 @@
   "scripts": {
     "start": "node index.js"
   },
+  "type": "module",
   "license": "MIT",
   "dependencies": {
     "discord.js": "^14.14.1",

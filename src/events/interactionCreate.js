@@ -1,10 +1,9 @@
-const {Collection, Events, InteractionType} = require('discord.js');
+import {Collection, Events, InteractionType} from 'discord.js';
+import config from '../config.js';
 const cooldown = new Collection();
-const config = require('../config.js');
 
-module.exports = {
+export default {
 	name: Events.InteractionCreate,
-
 	async execute(interaction) {
 		const {client} = interaction;
 		if (interaction.type === InteractionType.ApplicationCommand) {
