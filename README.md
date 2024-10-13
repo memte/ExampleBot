@@ -2,10 +2,10 @@
 
 - **Project built on `discord.js` v13.**
 - **Minimum required Node.js version: v16.6.**
-- **Example command setup can be found in [`src/commands/info/ping.js`](https://github.com/memte/ExampleBot/blob/v13-es6/src/commands/info/ping.js).**  
+- **Example command setup can be found in [`src/commands/info/ping.js`](https://github.com/memte/ExampleBot/blob/v13/src/commands/info/ping.js).**  
   For more details, visit the [Discord.js v13 Guide](https://v13.discordjs.guide/interactions/slash-commands.html#options).
   
-- **Note: Remember to configure your settings in the [`config.js`](https://github.com/memte/ExampleBot/blob/v13-es6/src/config.js) file.**
+- **Note: Remember to configure your settings in the [`config.js`](https://github.com/memte/ExampleBot/blob/v13/src/config.js) file.**
 
 ## 🌟 Support the Project
 
