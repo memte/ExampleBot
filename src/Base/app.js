@@ -5,10 +5,9 @@ const client = new Client({
 	shards: 'auto',
 });
 import {readdirSync} from 'node:fs';
-import dotenv from "dotenv";
-dotenv.config();
+import config from '../base/config.js';
 
-const token = process.env.BOT_TOKEN;
+const token = config.token;
 
 readdirSync('./src/Handlers').forEach(async file => {
 	const utilFile = await import(`../Handlers/${file}`);
