@@ -1,5 +1,5 @@
 import {ChannelType, Collection, Events} from 'discord.js';
-import config from '../config.js';
+import config from '../base/config.js';
 const cooldown = new Collection();
 
 export default {
@@ -31,8 +31,8 @@ export default {
 		command ||= client.commands.get(client.commandAliases.get(cmd));
 
 		if (command) {
-			if (command.ownerOnly && message.author.id !== config.owner) {
-				return message.reply({content: 'Only my **developer** can use this command.'});
+			if (command.ownerOnly && !config.owners.includes(message.author.id)) {
+				return message.reply({content: 'Only my **developers** can use this command.'});
 			}
 
 			if (command.cooldown) {

@@ -9,13 +9,13 @@ export default {
 		client.slashDatas = [];
 
 		// - Handlers -
-		const commandFolders = await readdirSync('./src/commands');
+		const commandFolders = await readdirSync('./src/Commands');
 
 		await Promise.all(commandFolders.map(async category => {
-			const commandFiles = await readdirSync(`./src/commands/${category}`);
+			const commandFiles = await readdirSync(`./src/Commands/${category}`);
 
 			await Promise.all(commandFiles.map(async file => {
-				const commands = await import(`../commands/${category}/${file}`);
+				const commands = await import(`../Commands/${category}/${file}`);
 
 				if (commands) {
 					if (commands.commandBase) {

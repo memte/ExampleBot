@@ -1,5 +1,5 @@
 import {Collection, Events, InteractionType} from 'discord.js';
-import config from '../config.js';
+import config from '../base/config.js';
 const cooldown = new Collection();
 
 export default {
@@ -13,8 +13,8 @@ export default {
 
 			try {
 				const command = client.slashCommands.get(interaction.commandName);
-				if (command.ownerOnly && interaction.user.id !== config.owner) {
-					return interaction.reply({content: 'Only my **developer** can use this command.', ephemeral: true});
+				if (command.ownerOnly && !config.owners.includes(interaction.user.id)) {
+					return interaction.reply({content: 'Only my **developers** can use this command.', ephemeral: true});
 				}
 
 				if (command.cooldown) {
