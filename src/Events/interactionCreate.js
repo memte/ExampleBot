@@ -13,6 +13,7 @@ export default {
 
 			try {
 				const command = client.slashCommands.get(interaction.commandName);
+				if (command) {
 				if (command.ownerOnly && !config.owners.includes(interaction.user.id)) {
 					return interaction.reply({content: 'Only my **developers** can use this command.', ephemeral: true});
 				}
@@ -37,6 +38,7 @@ export default {
 				} else {
 					command.slashRun(client, interaction);
 				}
+			}
 			} catch (e) {
 				console.error(e);
 				interaction.reply({content: 'An error occurred while executing the command! Please try again.', ephemeral: true});
