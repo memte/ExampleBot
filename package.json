@@ -1,0 +1,18 @@
+{
+  "scripts": {
+    "start": "node src/Base/app.js"
+  },
+  "type": "module",
+  "license": "MIT",
+  "dependencies": {
+    "@discordjs/rest": "^2.4.0",
+    "discord.js": "^13.17.1",
+    "dotenv": "^16.4.5",
+    "fs": "^0.0.2",
+    "lodash.uniqwith": "^4.5.0",
+    "winston": "^3.15.0"
+  },
+  "engines": {
+    "node": ">=16.6.0"
+  }
+}
