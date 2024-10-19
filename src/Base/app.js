@@ -17,9 +17,9 @@ import config from "../base/config.js";
 const token = config.token;
 
 readdirSync("./src/Handlers").map(async (file) => {
-  const utilFile = await import(`../Handlers/${file}`);
-  const util = utilFile.default;
-  util.execute(client);
+  const handlerFile = await import(`../Handlers/${file}`);
+  const handler = handlerFile.default;
+  handler.execute(client);
 });
 
 client.login(token);
