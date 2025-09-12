@@ -28,7 +28,6 @@ export default class GoogleSheet {
 
     async getLastRowIndex() {
         let startRow = 1;
-
         /**
          * Pull the 10 rows at a time until a batch has a empty row hit first
          */
@@ -38,16 +37,21 @@ export default class GoogleSheet {
                 ranges.push(TABLE_RANGE_TEMPLATE.replace('#', startRow + i).replace('#', startRow + i));
             }
 
+            logger.info(`Checking rows ${startRow} to ${startRow + MAX_ROW_PULL - 1} for empty row.`);
+
             const result = await this.sheet.spreadsheets.values.batchGet({
                 spreadsheetId: SPREADSHEET_ID,
                 ranges: ranges,
             });
 
             for (var row of result.data.valueRanges) {
+                logger.info(`Row ${row.range} values:`, row.values);
                 if (row.values === undefined || row.values === null) {
                     return row.range;
                 }
             }
+
+            startRow += MAX_ROW_PULL;
 
             // Sleep for 3 seconds to avoid rate limit
             await new Promise(r => setTimeout(r, 3000));
