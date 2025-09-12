@@ -1,20 +1,45 @@
-# Example Discord Bot Handler - V14
+<p align="center">
+  <img src="./assets/Gnome_banker-crop.jpg"/>
+</p>
 
-- Project built on `discord.js` v14.
-- Minimum required Node.js version: v18
-- Example command setup can be found in [`src/Commands/info/ping.js`](https://github.com/memte/ExampleBot/blob/v14/src/Commands/info/ping.js).
-  For more details, visit the [Discord.js Guide](https://discordjs.guide/slash-commands/advanced-creation.html).
+# Job Tracker Bot (Gnome Jober)
 
-- **Note:** Remember to configure your settings in the [`config.js`](https://github.com/memte/ExampleBot/blob/v14/src/Base/config.js) file and Don't forget to prepare a .env file in the same way as in [`.env.example`](https://github.com/memte/ExampleBot/blob/v14/.env.example)!
+A Discord bot that keeps track of jobs and allows users to apply for them. Adding them to google sheets.
 
-## Star History
+## Discord Dashboard Setup
 
-[![Star History Chart](https://api.star-history.com/svg?repos=memte/ExampleBot&type=Date)](https://www.star-history.com/#memte/ExampleBot&Date)
+Make sure to have these 3 options enabled for bot to work properly:
 
-## 🌟 Support the Project
+![](./assets/discord-enable.png)
 
-- If you find this project helpful, consider giving it a ⭐ on GitHub!
+## Google Cloud Setup
 
-![Vote](https://user-images.githubusercontent.com/63320170/175336722-373eaf92-1454-4bce-b97c-e8a629c2628e.png)
+Follow the quick start guide to learn how to set up Google Cloud: https://developers.google.com/workspace/sheets/api/quickstart/nodejs
 
-### [Click here for the Discord.js V13 version.](https://github.com/memte/ExampleBot/tree/v13)
+Also, to enable Google Sheet for your personal Gmail account, make sure to add your email to the test user account whitelist.
+This can be found under Google Auth Platform in the Audience section. Look for a button called "Add users", then add your Gmail address to
+the list.
+
+Follow this guide if you want more details: https://developers.google.com/identity/protocols/oauth2/production-readiness/brand-verification?hl=en#projects-used-in-dev-test-stage
+
+## Usage
+
+1. Install dependencies: `pnpm install`
+2. Run the bot: `pnpm start` or `pnpm run dev`
+
+## Environment Variables
+
+```txt
+BOT_TOKEN="ENTER TOKEN"
+GOOGLE_API_KEY="ENTER KEY"
+GOOGLE_CREDENTIALS_JSON="JSON_DATA_HERE"
+GOOGLE_TOKEN_JSON="JSON_DATA_HERE"
+SHEET_ID="ENTER ID"
+SHEET_HEADER_RANGE="Sheet1!A1:E1"
+SHEET_RANGE_TEMPLATE="Sheet1!A#:E#" # Use `#`` as a placeholder for row numbers
+
+```
+
+## License
+
+MIT

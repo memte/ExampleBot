@@ -1,8 +1,7 @@
 import { Client, GatewayIntentBits, Partials } from "discord.js";
 import { readdirSync } from "node:fs";
-import config from "./config.js";
 
-class BaseClient {
+export default class DiscordClient {
   constructor(token) {
     this.client = new Client({
       intents: Object.values(GatewayIntentBits),
@@ -25,7 +24,3 @@ class BaseClient {
     this.client.login(this.token);
   }
 }
-
-const token = config.token;
-const client = new BaseClient(token);
-client.start();

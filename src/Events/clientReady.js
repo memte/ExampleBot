@@ -10,7 +10,7 @@ export default {
 
     client.user.presence.set({
       activities: [
-        { name: "Developed by memte.", type: ActivityType.Listening },
+        { name: "GET A JOB!!!!!!!!!", type: ActivityType.Competing },
       ],
     });
 
