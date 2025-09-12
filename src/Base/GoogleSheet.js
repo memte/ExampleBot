@@ -37,15 +37,12 @@ export default class GoogleSheet {
                 ranges.push(TABLE_RANGE_TEMPLATE.replace('#', startRow + i).replace('#', startRow + i));
             }
 
-            logger.info(`Checking rows ${startRow} to ${startRow + MAX_ROW_PULL - 1} for empty row.`);
-
             const result = await this.sheet.spreadsheets.values.batchGet({
                 spreadsheetId: SPREADSHEET_ID,
                 ranges: ranges,
             });
 
             for (var row of result.data.valueRanges) {
-                logger.info(`Row ${row.range} values:`, row.values);
                 if (row.values === undefined || row.values === null) {
                     return row.range;
                 }
